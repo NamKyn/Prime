@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> The Next Prime Order</title>
+  <style>
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+}
+.myDiv {
+  border: 1px outset red;
+  background-color: lightblue;
+  text-align: center;
+}
+#out1 {
+  background-color: white;
+  text-align: center;
+  width: 100%; ;
+}
+.div3 {
+	vertical-align: center;
+	background-color: lightgreen;
+	width: 100%;
+	text-align: center;
+	overflow-x: auto;
+}
+.div5 {
+	background-color: orange;
+	width: 100%;
+	text-align: center;
+}
+
+.subx {
+    color: darkgreen;
+    opacity: 1;
+    background-color: white;
+}
+.fun {
+    width: 20%;
+}
+.chan {
+    width: 45%;
+}
+
+#div5rq {
+    overflow-x: auto;
+    color: green;
+}
+
+.tabl {
+  table-layout: relative;
+  width: 100%;
+  background-color: white;
+  border-collapse: collapse;
+  border: 1px solid orange;
+}
+
+.tablf {
+  table-layout: relative;
+  width: 100%;
+  background-color: white;
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+td,th {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.5)
+  );
+  border: 2px solid black;
+  text-align: center;
+}
+.data {
+    white-space: nowrap;
+    width: auto;
+}
+
+#tbfq{
+    background-color: white;
+    border: none;
+    overflow-x: auto;
+
+}
+#tbcq{
+    color: blue;
+    height:;
+    overflow-y: auto;
+}
+.debut {
+    background-color: red;
+    color: white;
+    width: 100%;
+}
+
+  </style>
+ <script type="text/javascript" defer>
+
+function Show(...args) {
+    args.forEach(arg => arg.style.display='')
+    
+}
+function Hide(...args) {
+    args.forEach(arg => arg.style.display='none')
+    
+}
+function defn(des) {
+    return document.getElementById(des);
+}
+function del(...args) {
+    args.forEach(arg => arg.remove())
+}
+
+function Sum(arr) {
+    return arr.reduce((a,b) => a+b,0);
+}
+
+let count1 = 0;
+let jio2;
+function generate(el1,el2,d){
+	let fac = Number(el2.value);
+	let no = parseInt(el1.value);
+	let dj = nThPrime(no);
+	let btnrq = document.querySelector('#manrq');
+	switch (fac) {
+	    case 1: {
+            btnrq.value = '';
+            btnrq.value = 'Everything goes for No or 0 % return' + '\n' + 'All items are distributed once at their total worth of ' + no;
+            btnrq.style.display = '';
+            btnrq.disabled = false;
+            btnrq.focus();
+	        break;
+	    }
+	    case dj: {
+            let pyd = ((dj * 0.5) - no) / no;
+            btnrq.value = '';
+            btnrq.value = 'Everything goes for a return of ' + (pyd * 100).toFixed(2) + " %" + "\n" + "Each item is distributed at half a worth unit";
+            
+            btnrq.style.display = '';
+            btnrq.disabled = false;
+            btnrq.focus();
+	        break;
+	    }
+	    default: {
+	        let ran1 = [0];
+	        let ran2 = [];
+	        let ran3 = [];
+	        let ran5 = [];
+	        let sup;
+	        let sup10;
+	        let sim1;
+	        let sim2;
+	        let sim3;
+	        let sup3;
+	        let avdf;
+	        ran1.push(no);
+	        let am = 1;
+	        while (am < no) {
+	            let maxran1 = Math.max(...ran1);
+	            let rt1 = ran1.indexOf(maxran1);
+	            ran1.splice(rt1,1);
+	            let am2 = grt(1,maxran1);
+	            let am3 = maxran1 - am2;
+	            ran1.push(am2); ran1.push(am3);
+	            ran2 = ran1;
+	            if (ran2.length === fac + 1) {
+	                sim1 = Sum(ran2);
+	                ran3 = ran2.map(i=>nThPrime(i));
+	                sim2 = Sum(ran3);
+	                ran5 = ran3.map((v,i) => v - ran2[i]);
+	                sim3 = Sum(ran5);
+	                avdf = sim3/(ran5.length - 1);
+	                let max1 = nThPrime(no);
+	                sup = max1 - sim2;
+	                let jio1 = primes(sup);
+	                jio2 = jio1.length;
+	                let max10 = nThPrime(jio2);
+	                sup10 = sup - max10;
+	                sup3 = jio2 / no;
+	                break;
+	                
+	            }
+	            am = grt(2,am);
+	            ran1 = ran2;
+	            
+	        }
+	        el1.value = jio2;
+	        genFac(el1,el2);
+	        let v1 = no;
+	        let va = fac;
+	        let vc = sim2;
+	        let vd = sup10;
+	        let ve = jio2;
+	        let vf = (sup3).toFixed(2);
+	        let brc = [v1,va,vc,vd,ve,vf];
+	        let urt = "tbcq";
+	        let purl = document.getElementById(urt);
+	        purl.deleteTFoot();
+	        let prud = document.createElement('tbody');
+	        purl.appendChild(prud);
+	        let tru = document.createElement('tr');
+	        prud.appendChild(tru);
+	        for(let x=0,y=brc.length;x<y;x++) {
+	            let prd = document.createElement("td");
+	            prd.className="data";
+	            prd.innerHTML = brc[x];
+	            tru.appendChild(prd);
+	            
+	        }
+	        let deb = document.createElement("button");
+	        deb.className = "debut";
+	        let ded = document.createElement("td");
+	        tru.appendChild(ded);
+	        deb.onclick = (ee) => {
+	            ee.stopPropagation();
+	            let par = deb.parentElement;
+	            let part = par.parentElement;
+	            let candid = purl.getElementsByTagName('tr');
+	            let calen = candid.length-2;
+                //alert(calen);
+	            if (part === candid[0] || part === candid[calen]) {
+	            part.remove();
+                }
+	            sumT();
+	            fillB();
+	            
+	        }
+	        deb.innerHTML = "X";
+	        ded.appendChild(deb);
+	        ran2.shift();
+	        ran3.shift();
+	        btnrq.value = '';
+	        btnrq.value = "Worth: " + "\n" + ran2 + "\n" + "Inventory: \n" + ran3;
+	        
+	    }
+	    
+	}
+    
+}
+	    
+function genFac(inpr,factr) {
+    let num = parseInt(inpr.value);
+	Show(factr);
+	let no = Number(num);
+	factr.innerHTML = '';
+	let d = no + 1;
+	let dj = nThPrime(no);
+	for(let i = 1; i < d ; i++) {
+			let opt = document.createElement('option');
+			opt.innerHTML = i;
+			factr.appendChild(opt);
+	}
+	let opts = document.createElement('option');
+	opts.innerHTML = dj;
+	factr.appendChild(opts);
+	
+}
+	
+function generateF(el,d) {
+    let num = parseInt(el.value);
+    let no = Number(num);
+	let dj = nThPrime(no);
+	let djc = Math.trunc(dj / 8766);
+	let djd = dj % 8766;
+	let djf = Math.trunc(djd / 24);
+	let dje = Math.trunc(djd % 24);
+	let px = (dj - no) / 2;
+    let py = px - no;
+    let pyz = py / dj;
+    let pp = py / no;
+    let pz = px / dj;
+    let s1 = no;
+    let sa = px;
+    let sb = py;
+    let s2 = pp.toFixed(2);
+    let sc = pyz.toFixed(2);
+    let sd = pz.toFixed(2);
+    let se = dj + "h";
+    let brd = [s1,sa,sb,s2,sc,sd,se];
+    for(i=0,j=brd.length;i<j;i++) {
+        let urt = "fina" + i + d;
+        let urit = document.getElementById(urt);
+        let pre = document.createElement("td");      
+        pre.className="data";
+        pre.innerHTML = brd[i];
+        urit.appendChild(pre);
+        
+    };
+}
+
+function genForm(d1,d2,d) {
+    let tbfurl = document.getElementById("tbf" + d);
+	if (!tbfurl) {
+    let tbf = document.createElement("table");
+    tbf.id = "tbf" + d;
+    tbf.className = "tablf";
+    d1.appendChild(tbf);
+    let s0 = "";
+    let s1 = "Principal";
+    let sa = "Gross PayBack";
+    let sb = "Net PayBack";
+    let s2 = "Timeless Rate";
+    let sc = "Net Hourly Rate";
+    let sd = "Gross Hourly Rate";
+    let se = "Pay Back Period";
+    let brd = [s1,sa,sb,s2,sc,sd,se];
+    for(i=0,j=brd.length;i<j;i++) {
+        let pre = document.createElement("tr");         
+        pre.id = "fina" + i + d;
+        let pru = document.createElement("th");
+        pru.style.textAlign = "left";
+        /*pru.style.position = "fixed";
+        pru.style.width = "35%";
+        pru.style.opacity = "1";*/
+        pru.style.backgroundColor = "white";
+        pru.className = "data";
+        pre.appendChild(pru);
+        //alert(pre.id);
+        pru.innerHTML = brd[i];
+        tbf.appendChild(pre);
+        
+    };
+	    
+	}
+    let tbcurl = document.getElementById("tbc" + d);
+	if (!tbcurl) {
+	let tbc = document.createElement("table");
+	tbc.id = "tbc" + d;
+	tbc.className = "tabl";
+	d2.appendChild(tbc);
+	let v1 = "Worth";
+	let va = "Persons";
+	let vc = "Dists";
+	let vd = "Carry";
+	let ve = "Balance";
+	let vf = "Yield";
+	let brc = [v1,va,vc,vd,ve,vf];
+    let prdt = document.createElement("thead");
+    prdt.id = "dist" + d;
+    tbc.appendChild(prdt);
+	for(let x=0,y=brc.length;x<y;x++) { 
+		let pru = document.createElement("th");
+		
+		pru.className = "data";
+		pru.innerHTML = brc[x];
+		prdt.appendChild(pru);
+	    
+	}
+     let dela = document.createElement("button");
+	 dela.className = "debut";
+	 dela.id = "clrbtn";
+	  let deda = document.createElement("th");
+	   prdt.appendChild(deda);
+	   dela.onclick = (e10) => {
+	            e10.stopPropagation();
+	            let boda = tbc.tBodies;
+	            del(...boda);
+	            tbc.deleteTFoot();
+	            
+	   }
+       dela.innerHTML = "Clear";
+	   deda.appendChild(dela);
+	}
+    
+}
+
+function sumT() {
+    let sum;
+    var tablle = document.getElementById("tbcq"), sumVal = 0;
+    tablle.deleteTFoot();
+    let tft = document.createElement('tfoot');
+    tft.id = "foot";
+    let str = document.createElement('tr');
+    let tablen = tablle.rows.length;
+    let rowlen = tablle.rows[0].cells.length;
+    for (let k=0;k<rowlen;k++){
+        let std = document.createElement('td');
+        let soms = [];
+        let sams = [];
+        for(var i = 0; i < tablen; i++)
+            {
+                let mva = parseInt(tablle.rows[i].cells[k].innerHTML);
+                soms.push(mva);
+                sams = soms.filter(Number);
+                
+            }
+            sum = Sum(sams);
+            if (k<5) {
+                std.style['color'] = 'purple';
+                std.innerHTML = sum;
+                
+            }
+            str.appendChild(std);
+            
+    }
+    tft.appendChild(str);
+    let sumz = str.getElementsByTagName('td');
+    let asbal = parseInt(sumz[4].innerHTML);
+    let subal = parseInt(sumz[3].innerHTML);
+    let pbal = primes(subal).length;
+    let tbal = asbal + pbal;
+    let bata = tablen - 1;
+    let divy = parseInt(tablle.rows[0].cells[0].innerHTML);
+    let yasb = (Number(tbal) / Number(divy)).toFixed(2);
+    let eff = (((nThPrime(divy)*0.5)-divy)/divy).toFixed(20);
+    sumz[5].style['color'] = 'green';
+    sumz[5].innerHTML = yasb;
+    sumz[6].innerHTML = (Number(yasb)/eff).toFixed(2);
+    sumz[6].style['color'] = 'white';
+    tablle.appendChild(tft);
+            
+}
+
+function fillB() {
+    let tabe = defn('tbcq');
+    let plas = document.getElementById('no1rq');
+    let flas = document.getElementById('factrq');
+    let lanez = tabe.rows;
+    let lanlen = lanez.length;
+    let dats = tabe.rows[lanlen-2].cells;
+    let datlen = dats.length;
+    let laba = dats[datlen-3].innerHTML;
+    let nois = plas.value;
+    plas.value = parseInt(laba);
+    genFac(plas,flas);
+}
+
+const ram = navigator.deviceMemory;
+const factors = number => [...Array(number + 1).keys()].filter(i=>number % i === 0);
+const primes = number => [...Array(number + 1).keys()].filter(i => isPrime(i));
+
+const leastFactor = function(n){
+ if (isNaN(n) || !isFinite(n)) return NaN;  
+ if (n==0) return 0;  
+ if (n%1 || n*n<2) return 1;
+ if (n%2==0) return 2;  
+ if (n%3==0) return 3;  
+ if (n%5==0) return 5;  
+ var m = Math.sqrt(n);
+ for (var i=7;i<=m;i+=30) {
+  if (n%i==0)      return i;
+  if (n%(i+4)==0)  return i+4;
+  if (n%(i+6)==0)  return i+6;
+  if (n%(i+10)==0) return i+10;
+  if (n%(i+12)==0) return i+12;
+  if (n%(i+16)==0) return i+16;
+  if (n%(i+22)==0) return i+22;
+  if (n%(i+24)==0) return i+24;
+ }
+ return n;
+}
+
+const isPrime = function(n) {
+ if (isNaN(n) || !isFinite(n) || n%1 || n<2) return false; 
+ if (n==leastFactor(n)) return true;
+ return false;
+}
+
+function nThPrime(n) {
+    if (n === 0) {
+        return 0;
+    }
+    let i=2;
+    while(n>0) {
+        if(isPrime(i))
+          n--;
+        i++;
+    }
+    i-=1;
+    return i;
+}
+
+function grt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+}
+
+  </script>
+  </head>
+  <body>
+	    <div id="didb" class="myDiv">
+	        <div id="div5pq" class='myDiv' style='display:none;background-color:white;'><span><p><b>Commodity <br/> <pre>Random Distribution</pre></b></p></span></div>
+    <div class="div5" id="div5rq"></div>
+	   <div class="div1" id="div10rq">
+		   <button id="nex2" onclick="sumT();"  style="background-color:grey;width:50%;color:gold;display:none;">Sum Up</button>
+		    <form id="primrq">
+			    <span>
+				    <p>  <label for="no1rq"> Distributive Worth: </label> </p>
+			    <p><input name="number" type="number" id="no1rq" min=0 max=48000 value=24000 style="width:80%;text-align:center;" required /></p>
+			    <span><p>
+			        <input name="worth" type="number" id="no2rq" class="fun" disabled/> Items</p>
+                <div id="txtq"><textarea name="readme" id="manrq" rows="5" style="width:80%"; disabled>
+                    README
+Enter DistributiveWorth (slider/exact),
+Credit and Possibilities ShowBelow,
+Choose Persons Group FromDropDown,
+Distribute Details Will Show OnTop.
+</textarea></div></span>
+			        <p><input type="submit" id="no3rq" class="chan" value="Exact"  />
+			        <input type="submit" id="no4rq" class="chan" value="Slide" /></p>
+			    </span>
+			    <span>
+				    <p>  <label for="factrq"> Numbers Of Persons: </label> </p>
+			    <p><select name="factorw" id="factrq" style="width:30%;"></select>
+
+			    <input type="number" id="searchq" name="index" placeholder="Pre Search" class="subx" style="width:30%; display:none" />
+			    <p id="psl" style="display:none;"><input type="range" id="sliderq" name="slisel" class="subx" style="width:80%;"</p></span></form>			    
+	    <div id="div3pq" class='myDiv'style="display:none;background-color:white;"><span><p><b>Credit</b></p></span></div>
+	    <div class="div3" id="div3rq"></div>
+	    <script async type="text/javascript">
+	    try {
+const formrq = document.querySelector('#primrq');
+const inprq = document.querySelector('#no1rq');
+const inp2rq = document.querySelector('#no2rq');
+const inp3rq = document.querySelector('#no3rq');
+const inp4rq = document.querySelector('#no4rq');
+const factrq = document.querySelector('#factrq');
+const distrq = document.querySelector('#distrq');
+const div5rq = document.querySelector('#div5rq');
+const div3rq = document.querySelector('#div3rq');
+const btnnrq = document.querySelector('#btnnq');
+const searchrq = document.querySelector('#searchq');
+const sliderq = document.querySelector('#sliderq');
+const pslq = document.querySelector('#psl');
+const sumb = defn('nex2');
+let dq;
+const div5prq = defn('div5pq');
+const div3prq = defn('div3pq');
+const clr = defn('clrbtn');
+
+inprq.addEventListener('input',function clockrq(e) {
+    e.preventDefault();
+    dq="q";
+    Show(div5rq,div3rq,div5prq,div3prq,searchrq);
+    if(this.value > 0){
+        if(parseInt(this.value) > parseInt(this.max)){
+      this.value = this.max;
+      alert("Maximum is: " + this.max);
+            
+        }
+        
+    }
+    inp2rq.value = nThPrime(Number(inprq.value));
+    genForm(div3rq,div5rq,dq);
+    genFac(inprq,factrq);
+    clr.click();
+    
+});
+let countq = 0;
+factrq.addEventListener('input',(e19) => {
+    dq = "q";
+    inprq.value > 5 ? generate(inprq,factrq,dq) : inp3rq.click();
+    sumb.dispatchEvent(new Event('click'));
+    
+});
+inprq.addEventListener("change", () => {
+    dq="q";
+    inprq.value > 0 ? generateF(inprq,dq) : alert('Input Higher Number');
+});
+inp3rq.addEventListener('click',(e13) => {
+    e13.preventDefault();
+	inprq.type="number";
+	inprq.className = "fun";
+	Show(factrq,searchrq);
+	Hide(pslq);
+
+});
+inp4rq.addEventListener('click',(e14) => {
+    e14.preventDefault();
+	inprq.type="range";
+	inprq.max="48000";
+	inprq.className = "";
+	Show(pslq);
+	//Hide(factrq,searchrq);
+
+});
+searchrq.addEventListener('input', function() {
+    factrq.style.display = "none";
+    this.max = inprq.value;
+    this.min = "2";
+    const searchq = new FormData(formrq);
+    let fact = searchq.get('index');
+    if (parseInt(this.value) > (this.min - 1) && parseInt(this.value) < (parseInt(this.max)) + 1) {
+        this.onchange = () => {
+        factrq.value = 0 + parseInt(fact);
+        factrq.dispatchEvent(new Event('input'));
+            
+        }
+        
+    }
+    
+});
+searchrq.addEventListener('blur', () => {
+    if (div5rq.style.display !== 'none') {
+        factrq.style.display = '';
+        
+    }
+});
+sliderq.addEventListener('input', (e33) => {
+    e33.preventDefault();
+    if (factrq.value) {
+    let smax = Number(inprq.value);
+    this.max = smax;
+    let search = new FormData(formrq);
+    let sval = search.get('slisel');
+    let svalue = Number(sval/100);
+    let slive = ~~(svalue*smax);
+    factrq.value = slive;
+    smax > 5 ? factrq.dispatchEvent(new Event('input')) : inp3rq.click();
+        
+    }
+    else { inp3rq.click();
+        
+    }
+});
+	    }
+	    catch(e) {
+	        alert(e);
+	    }
+	    </script>
+	    </div>
+	   <!-- <button id="nex2" onclick="sumT();"  style="background-color:grey;width:50%;color:gold;">Sum Up</button> -->
+	    </div>
+  </body>
+  </html>
