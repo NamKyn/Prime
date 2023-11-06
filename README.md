@@ -1,4 +1,4 @@
-#Next Prime Order
+# Next Prime Order
 
 **A vehicular Mechanism of Credit and Commodity**
 
