@@ -1,6 +1,6 @@
-<b>Next Prime Order</b>
+#Next Prime Order
 
-<code>A vehicular Mechanism of Credit and Commodity</code>
+**A vehicular Mechanism of Credit and Commodity**
 
 Load the html file from release or code and test on your client.
 
