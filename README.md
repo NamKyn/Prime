@@ -1,6 +1,6 @@
 # Next Prime Order
 
-**A vehicular Mechanism of Credit and Commodity**
+## A vehicular Mechanism of Credit and Commodity
 
 Load the html file from release or code and test on your client.
 
